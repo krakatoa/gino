@@ -1,0 +1,16 @@
+<%= stylesheet_link_tag "altidus" %>
+<%- load_last_news %>
+<div id="wrapper">
+  <div id="header"><%= render :partial => "layouts/header" %></div>
+  <div id="content">
+    <div id="left-side">
+      <div id="login-box">
+        <%= render :partial => "layouts/login_box" %>
+      </div>
+      <div id="menu">
+        <%= render :partial => "layouts/menu" %>
+      </div>
+    </div>
+    <%= content_tag(:div, yield, {:id => "main", :class => yield(:main_class)}) %>
+  </div>
+</div>

@@ -1,0 +1,137 @@
+html, body {
+  margin: 0px;
+  padding: 0px;
+}
+body {
+  font: 10px Tahoma, verdana, sans-serif;
+}
+img {
+  border: 0px;
+}
+#wrapper {
+  width: 1000px; /* 1024 */
+}
+
+#header {
+  background: left url(../images/header_back.png) repeat-x;
+  min-height: 83px;
+  overflow: visible;
+  color: #d8d9db; /* el mismo blanco que login-box-back */
+}
+
+#header div {
+  margin-top: 55px;
+  line-height: 15px;
+  float: left;
+}
+
+#header #altidus-logo {
+  margin-top: 0px;
+  margin-left: 115px;
+  width: 147px;
+}
+
+#header #navigation-bar {
+  margin-left: 150px;
+  width: 250px;
+}
+
+#header #navigation-bar li {
+  padding: 0px 5px;
+  list-style: none;
+  display: inline;
+}
+
+#header #search {
+  width: 150px;
+}
+
+#header #search label {
+  float: left;
+  width: 25%;
+}
+
+#header #search input {
+  float: left;
+  border: 0px;
+  width: 75%;
+}
+
+#header #language-selector {
+  width: 40px;
+}
+
+#content {
+  margin-top: 10px;
+  overflow: hidden;
+}
+
+#left-side {
+  margin-left: 115px;
+  float: left;
+  padding: 0px 10px;
+  width: 145px;
+  overflow: hidden;
+  height: 100%;
+  background: top right url(../images/vertical_split.png) no-repeat;
+}
+
+#left-side #login-box {
+  background-color: #d8d9db; /* el mismo blanco que las fuentes de navigation-bar */
+  padding: 5px;
+}
+
+#left-side #login-box label {
+  width: 15%;
+  color: #767779;
+  font-size: 11px;
+}
+
+#left-side #login-box input {
+  width: 85%;
+  border: 0px;
+}
+
+#left-side #login-box button {
+  color: white;
+  background-color: #9d9ea0;
+  border: none;
+  cursor: pointer;
+}
+
+#left-side #menu {
+  height: 75%;
+  background: #ededef;
+}
+
+#left-side #menu label {
+  color: #ee9408;
+}
+
+#left-side #menu li {
+  list-style: none;
+}
+
+#left-side #menu br.division {
+  height: 1px;
+  width: 100%;
+  background-color: #e9ccbc;
+  overflow: visible;
+}
+
+#left-side #menu #legal {
+  position: relative;
+  top: 150px;
+}
+
+#main {
+  margin: 0px 10px;
+  height: 499px;
+  width: 615px;
+  float: left;
+}
+
+#main.about {
+  font-size: 14px;
+  font-style: italic;
+}

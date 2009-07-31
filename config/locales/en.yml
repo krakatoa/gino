@@ -1,0 +1,18 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+# See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+
+en:
+  news: News
+  read: read
+  read_it_in: read it in
+  english: english
+  spanish: spanish
+  read_last_news: read last news
+  register: Register
+  username: Username
+  password: Password
+  conditions: Terms and conditions
+  politic: Private policy
+  search: Search
+  register: Register
+  about_us: About us

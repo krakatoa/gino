@@ -1,0 +1,20 @@
+<label>Lorem ipsum</label>
+<ul>
+  <%- if @last_news and @last_news.size > 0 %>
+    <%- @last_news.each do |news| %>
+      <li><%= link_to_unless_current news.title, news_path(:id => news.cross_language_id) %></li>
+    <%- end %>
+  <%- end %>
+</ul>
+<br class="division" />
+<label>Lorem ipsum</label>
+<ul>
+  <li>Lorem ipsum</li>
+  <li>Lorem ipsum</li>
+  <li>Lorem ipsum</li>
+  <li>Lorem ipsum</li>
+  <li>Lorem ipsum</li>
+</ul>
+<div id="legal">
+  <%= render :partial => "layouts/legal" %>
+</div>
