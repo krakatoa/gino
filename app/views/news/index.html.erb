@@ -1,10 +1,18 @@
 <%- if @news.size > 0 %>
   <%- @news.each do |news| %>
-    <%= news.title %> <%= link_to t(:read), news_path(:id => news.cross_language_id) %>
-    <%- other_languages = I18n.available_locales.select{|l| not l == I18n.locale} %>
-    <%- other_languages.each do |language| %>
-      <%= link_to "#{t(:read_it_in)} #{nombre_idioma(language)}", news_path(:locale => language, :id => news.cross_language_id) %>
-    <%- end %>
+    <%= news.title %>
+    <p>
+      <%- if logged_in? %>
+        <%= news.text %>
+      <%- else %>
+        <%= news.traeme_una_puntita %>
+        <%= link_to t(:read), news_path(:id => news.cross_language_id) %>
+      <%- end %>
+    </p>
+    <%#- other_languages = I18n.available_locales.select{|l| not l == I18n.locale} %>
+    <%#- other_languages.each do |language| %>
+      <%#= link_to "#{t(:read_it_in)} #{nombre_idioma(language)}", news_path(:locale => language, :id => news.cross_language_id) %>
+    <%#- end %>
     <br />
   <%- end %>
 <%- end %>

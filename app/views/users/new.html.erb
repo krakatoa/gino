@@ -1,2 +1,14 @@
 <%= stylesheet_link_tag "#{I18n.locale}.css" %>
 <%- content_for :main_class, "register" %>
+<fieldset>
+  <legend>New user</legend>
+  <%- form_for @subscriber_user, :url => users_path do |f| %>
+    <%- if f.error_messages.size > 0 %>
+      <div class="error"><%= f.error_messages %></div>
+    <%- end %>
+    <%= f.text_field :email %>
+    <%= f.text_field :email_confirmation %>
+    <p><%= f.submit "Submit" %></p>
+  <%- end %>
+</fieldset>
+<%= link_to "Back", users_path %>

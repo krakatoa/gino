@@ -10,3 +10,4 @@
 <div id="language-selector">
   <%= render :partial => "layouts/home/language_selector" %>
 </div>
+<%= link_to "Logout", logout_path if logged_in? %>
