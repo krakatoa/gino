@@ -1,6 +1,6 @@
 <fieldset>
   <legend>Edit account</legend>
-  <%- form_for :user, :url => user_path(@user), :html => { :method => :put }, :builder => StgFormBuilder do |f| %>
+  <%- form_for :user, :url => user_path(@user), :html => { :method => :put } do |f| %>
     <%= render :partial => "form", :locals => { :f => f }  %>
   <%- end %>
 </fieldset>

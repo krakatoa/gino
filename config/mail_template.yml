@@ -1,0 +1,14 @@
+development:
+  address: smtp.gmail.com
+  domain: localhost
+  user_name: 
+  password: 
+  port: 587
+  authentication: !ruby/symbol login
+  enable_starttls_auto: true
+production:
+  address: mail.authsmtp.com
+  domain: 
+  user_name: 
+  password: 
+  enable_starttls_auto: true

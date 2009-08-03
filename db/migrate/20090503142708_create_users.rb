@@ -7,10 +7,12 @@ class CreateUsers < ActiveRecord::Migration
       t.string :crypted_password
       t.string :password_salt
 
-      t.string :name
-      t.string :last_name
-      t.integer :birth_year
-      t.integer :language
+      t.string :name, :default => nil
+      t.string :last_name, :default => nil
+      t.integer :birth_year, :default => nil
+      t.integer :language_id, :null => false
+
+      t.boolean :active, :default => false, :null => false
 
       t.string :persistence_token
       t.string :last_login_ip

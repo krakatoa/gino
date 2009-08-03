@@ -1,3 +1,4 @@
+
 class UsersController < ApplicationController
   before_filter :require_no_user, :only => [:new, :create, :register]           # in ApplicationController
   before_filter :require_user, :except => [:new, :create, :register]            # in ApplicationController
@@ -11,6 +12,8 @@ class UsersController < ApplicationController
     @subscriber_user = SubscriberUser.new(params[:subscriber_user]) # We use GUI only for creation of Customers
 
     if @subscriber_user.save_without_session_maintenance
+      @subscriber_user.deliver_activation_instructions!
+      flash[:notice] = "Your account has been created. Please check your e-mail for your account activation instructions!"
       redirect_to news_index_url
     else
       render :action => :new
