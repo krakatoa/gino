@@ -1,4 +1,8 @@
 class News < ActiveRecord::Base
+  acts_as_textiled :text
+
+  after_create :create_news_localizations
+
   belongs_to :news_localizations, :foreign_key => "cross_language_id"
   has_one :es, :through => :news_localizations
   has_one :en, :through => :news_localizations
@@ -8,16 +12,41 @@ class News < ActiveRecord::Base
 
   named_scope :in_language, lambda { |lang| { :conditions => { :language => lang } } }
 
-  #def initialize(attributes=nil)
-    # si me pasa una news en los atributos, que me tome el cross_language_id
-  #end
+  def initialize(attributes=nil)
+    super
+    self.cross_language_id ||= (NewsLocalizations.count + 1)
+  end
 
   def traeme_una_puntita
-    max = 1 # cantidad de palabras
+    max = 10 # cantidad de palabras
     palabras = self.text.split(" ")
     cant_palabras = palabras.size
     puntita = palabras[0..max - 1].join(" ")
     puntita.concat("...") if cant_palabras > max
     return puntita
   end
+
+  def other_languages
+    # TODO se podra hacer con menos queries ?
+
+    other_available_languages = Language.available_languages.select{|l| l != Language.find_by_code(self.language).code}
+    news_localizations = NewsLocalizations.find(self.cross_language_id)
+
+    other_languages = []
+    other_available_languages.each do |language|
+      other_languages << language unless news_localizations.read_attribute("#{language}_id").blank?
+    end
+    other_languages
+  end
+
+  private
+    def create_news_localizations
+      begin
+        asigned_news_localizations = NewsLocalizations.find(self.cross_language_id)
+      rescue
+        asigned_news_localizations = NewsLocalizations.create
+      end
+      asigned_news_localizations.write_attribute("#{self.language.to_sym}_id", self.id)
+      asigned_news_localizations.save
+    end
 end

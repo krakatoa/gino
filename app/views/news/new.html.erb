@@ -1,0 +1,17 @@
+<%- form_for @news, :url => news_index_path do |f| %>
+  <%- if f.error_messages.size > 0 %>
+    <div class="error"><%= f.error_messages %></div>
+  <%- end %>
+  <!--<textarea cols="40" id="article_body" name="article[body]" rows="20" style="width: 580px; padding: 5px"></textarea>-->
+  <%= f.text_field :title %><br />
+  <%= f.text_field :bajada %>
+  <%= f.text_area :text %>
+  <link href="stylesheets/textile-editor.css" media="screen" rel="Stylesheet" type="text/css" />
+  <%= javascript_include_tag "jquery.TextileEditor" %>
+  <script type="text/javascript">
+  $(function(){
+    $('#news_text').TextileEditor('extended');
+  });
+  </script>
+  <p><%= f.submit "Submit" %></p>
+<%- end %>

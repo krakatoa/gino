@@ -9,10 +9,7 @@
         <%= link_to t(:read), news_path(:id => news.cross_language_id) %>
       <%- end %>
     </p>
-    <%#- other_languages = I18n.available_locales.select{|l| not l == I18n.locale} %>
-    <%#- other_languages.each do |language| %>
-      <%#= link_to "#{t(:read_it_in)} #{nombre_idioma(language)}", news_path(:locale => language, :id => news.cross_language_id) %>
-    <%#- end %>
     <br />
   <%- end %>
 <%- end %>
+<%= link_to "Nueva notice!", new_news_path %>

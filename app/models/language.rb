@@ -3,4 +3,6 @@ class Language < ActiveRecord::Base
 
   @@languages = Language.all.collect(&:code)
   def self.available_languages; @@languages; end
+
+  private
 end
