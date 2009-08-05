@@ -1,0 +1,12 @@
+#!/usr/bin/env ruby
+
+# ISO 3166 Country Codes: http://www.maxmind.com/app/iso3166
+# Please note that "EU" and "AP" codes are only used when a specific country code has not been designated (see FAQ).
+# Blocking or re-directing by "EU" or "AP" will only affect a small portion of IP addresses.
+# Instead, you should list the countries you want to block/re-direct individually.
+
+RAILS_HOME = File.expand_path(File.join(File.dirname(__FILE__),".."))
+require File.join(RAILS_HOME, 'lib','feeder.rb')
+require RAILS_HOME + "/config/boot"
+
+Feeder.feed_country_names

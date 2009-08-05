@@ -14,6 +14,10 @@ module ApplicationHelper
     t(nombre_idioma)
   end
 
+  def country_names_collection(lang=I18n.locale)
+    CountryName.all(:order => "#{lang} asc").collect{|c| [c.send(lang), c.code]}
+  end
+
   def load_last_news
     @last_news = News.in_language(I18n.locale).all(:order => "created_at desc", :limit => 5)
   end

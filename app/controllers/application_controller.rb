@@ -3,7 +3,7 @@
 
 class ApplicationController < ActionController::Base
   helper :all # include all helpers, all the time
-  helper_method :current_user_session, :current_user, :logged_in?
+  helper_method :current_user_session, :current_user, :logged_in?, :current_country_code, :current_country_name
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
 
   # Scrub sensitive parameters from your log
@@ -89,5 +89,17 @@ class ApplicationController < ActionController::Base
         # only for the current_user, instead of redirecting
         redirect_to root_url
       end
+    end
+
+    def current_country_code
+      if ENV['RAILS_ENV'].eql?('production')
+        GEOIP.country(request.remote_ip)[3].downcase
+      else
+        "ar"
+      end
+    end
+
+    def current_country_name
+      CountryName.find_by_code(current_country_code).send(I18n.locale)
     end
 end

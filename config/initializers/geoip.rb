@@ -1,0 +1,1 @@
+GEOIP = GeoIP.new(File.join(DATA_DIR,'GeoIP.dat'))

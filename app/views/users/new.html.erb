@@ -8,6 +8,7 @@
     <%- end %>
     <%= f.text_field :email %>
     <%= f.text_field :email_confirmation %>
+    <%= f.select :country, country_names_collection, :selected => current_country_code %>
     <p><%= f.submit "Submit" %></p>
   <%- end %>
 </fieldset>
