@@ -1,5 +1,9 @@
-<%= label_tag :login_username, t(:username) %>
-<%= text_field_tag :login_username %>
-<%= label_tag :login_password, t(:password) %>
-<%= text_field_tag :login_password %>
-<button type="submit"><%= t(:register) %></submit>
+<%- form_for :user_session, :url => user_session_path do |f| %>
+  <%= f.label :username, t(:username) %>
+  <%= f.text_field :username %>
+  <%= f.label :password, t(:password) %>
+  <%= f.password_field :password %>
+  <em><%= flash[:notice] %></em>
+  <br />
+  <button type="submit"><%= t(:register) %></button>
+<%- end %>

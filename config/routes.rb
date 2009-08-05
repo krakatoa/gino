@@ -2,6 +2,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resource :users, :path_prefix => '/:locale'
 
   map.resources :news, :path_prefix => '/:locale'
+  map.resources :news
 
   map.about "/about", :controller => "home", :action => "about", :path_prefix => "/:locale"
 
@@ -17,5 +18,6 @@ ActionController::Routing::Routes.draw do |map|
   map.root :controller => "home", :path_prefix => "/:locale"
   map.root :controller => "home"
 
+  map.resource :user_session, :path_prefix => "/:locale"
   map.resource :user_session
 end

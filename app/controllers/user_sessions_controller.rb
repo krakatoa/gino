@@ -11,7 +11,8 @@ class UserSessionsController < ApplicationController
 		if @user_session.valid? and @user_session.save
       redirect_back_or_default news_index_url
 		else
-			render :action => :new
+      flash[:notice] = @user_session.errors.on("base") if @user_session.errors.on("base")
+      redirect_back_or_default root_url
 		end
 	end
 

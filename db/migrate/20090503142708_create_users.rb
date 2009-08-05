@@ -11,6 +11,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string :last_name, :default => nil
       t.integer :birth_year, :default => nil
       t.integer :language_id, :null => false
+      t.string :country
 
       t.boolean :active, :default => false, :null => false
 
