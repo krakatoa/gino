@@ -3,7 +3,7 @@ html, body {
   padding: 0px;
 }
 body {
-  font: 10px Tahoma, verdana, sans-serif;
+  font: 11px Trebuchet, Tahoma, verdana, sans-serif;
 }
 img {
   border: 0px;
@@ -11,12 +11,25 @@ img {
 #wrapper {
   width: 1000px; /* 1024 */
 }
+a {
+  /*color: red;*/
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
 
 #header {
   background: left url(../images/header_back.png) repeat-x;
-  min-height: 83px;
-  overflow: visible;
+  height: 83px;
+  overflow: hidden; /*visible;*/
   color: #d8d9db; /* el mismo blanco que login-box-back */
+}
+
+#header a {
+  font-weight: bold;
+  text-decoration: none;
+  color: #d8d9db;
 }
 
 #header div {
@@ -31,9 +44,20 @@ img {
   width: 147px;
 }
 
+#header #language-selector {
+  margin-left: 10px;
+  width: 180px;
+}
+
+#header #language-selector li {
+  padding: 0px 5px;
+  list-style: none;
+  display: inline;
+}
+
 #header #navigation-bar {
-  margin-left: 150px;
-  width: 250px;
+  margin-left: 100px;
+  width: 300px;
 }
 
 #header #navigation-bar li {
@@ -43,22 +67,18 @@ img {
 }
 
 #header #search {
-  width: 150px;
+  width: 200px;
 }
 
 #header #search label {
-  float: left;
-  width: 25%;
+  /*float: left;*/
+  width: 50px;
 }
 
 #header #search input {
   float: left;
   border: 0px;
-  width: 75%;
-}
-
-#header #language-selector {
-  width: 40px;
+  width: 50px;
 }
 
 #content {
@@ -116,7 +136,7 @@ img {
   height: 1px;
   width: 100%;
   background-color: #e9ccbc;
-  overflow: visible;
+  overflow: hidden; /*visible;*/
 }
 
 #left-side #menu #legal {
@@ -134,4 +154,25 @@ img {
 #main.about {
   font-size: 14px;
   font-style: italic;
+}
+
+.news .image img {
+  width: 80px;
+}
+
+.news.first .image img {
+  width: 150px;
+}
+
+.last-news {
+  height: auto;
+}
+
+.last-news .news {
+  float: left;
+  width: 50%;
+}
+
+.last-news .news div {
+  float: left;
 }

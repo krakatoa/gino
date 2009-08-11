@@ -1,18 +1,16 @@
 <%- if @news.size > 0 %>
+  <%- is_first = true %>
   <%- @news.each do |news| %>
-    <%= link_to news.title, news_path(:id => news.cross_language_id) %>
-    <p>
-      <%- if logged_in? %>
-        <%= link_to(image_tag(news.image_path, :width => "100"), news_path(:id => news.cross_language_id)) if news.image_path %>
-        <%= news.traeme_una_puntita %>
-      <%- else %>
-        <%= news.traeme_una_puntita %>
-        <%= link_to t(:read), news_path(:id => news.cross_language_id) %>
-      <%- end %>
-    </p>
-    <br />
+    <%= render :partial => "last_news", :locals => {:news => news, :is_first => is_first} %>
+    <%- if is_first %>
+      <%- is_first = false %>
+      <div class="last-news">
+    <%- end %>
   <%- end %>
+  </div>
 <%- end %>
-<% if logged_in? and current_user.is_a? AdminUser %>
-  <%= link_to "Nueva notice!", new_news_path %>
-<% end %>
+<div class="bottom">
+  <% if logged_in? and current_user.is_a? AdminUser %>
+    <%= link_to "Nueva notice!", new_news_path %>
+  <% end %>
+</div>

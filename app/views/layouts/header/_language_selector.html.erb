@@ -1,3 +1,6 @@
-<%- Language.available_languages.each do |language_code| %>
-  <%= link_to image_tag("#{language_code}.png"), {:locale => language_code.to_sym} %>
-<%- end %>
+<ul>
+  <%- Language.available_languages.each do |language_code| %>
+    <li><%= link_to nombre_idioma(language_code), {:locale => language_code.to_sym} %></li>
+    <%#= link_to image_tag("#{language_code}.png"), {:locale => language_code.to_sym} %>
+  <%- end %>
+</ul>

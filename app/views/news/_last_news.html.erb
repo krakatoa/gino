@@ -1,0 +1,8 @@
+<%- class_for_news = "news" %>
+<%- class_for_news.concat(" first") if is_first %>
+<div class="<%= class_for_news %>">
+  <%= link_to news.title, news_path(:id => news.cross_language_id) %>
+  <div class="image"><%= link_to(image_tag(news.image_path), news_path(:id => news.cross_language_id)) if news.image_path %></div>
+  <div class="body"><%= news.traeme_una_puntita %></div>
+  <%#= link_to t(:read), news_path(:id => news.cross_language_id) %>
+</div>
