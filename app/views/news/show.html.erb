@@ -1,5 +1,6 @@
 <h1><%= @news.title %></h1>
 <%- if logged_in? %>
+  <%= image_tag(@news.image_path, :width => "300") if @news.image_path %>
   <%= @news.text %>
 <%- else %>
   <%= @news.traeme_una_puntita %>

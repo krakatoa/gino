@@ -1,4 +1,4 @@
-<%- form_for @news, :url => news_index_path do |f| %>
+<%- form_for @news, :url => news_index_path, :html => { :multipart => true } do |f| %>
   <%- if f.error_messages.size > 0 %>
     <div class="error"><%= f.error_messages %></div>
   <%- end %>
@@ -6,6 +6,7 @@
   <%= f.text_field :title %><br />
   <%= f.text_field :bajada %>
   <%= f.text_area :text %>
+  <%= f.file_field :image %>
   <link href="stylesheets/textile-editor.css" media="screen" rel="Stylesheet" type="text/css" />
   <%= javascript_include_tag "jquery.TextileEditor" %>
   <script type="text/javascript">

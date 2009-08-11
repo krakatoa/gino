@@ -12,11 +12,29 @@ class News < ActiveRecord::Base
 
   named_scope :in_language, lambda { |lang| { :conditions => { :language => lang } } }
 
+  attr_accessor :image
+
   def initialize(attributes=nil)
     super
     self.cross_language_id ||= (NewsLocalizations.count + 1)
   end
 
+  def image_fullpath
+    File.join(IMAGES_PATH, self.image_filename)
+  end
+
+  def image_path
+    if File.exists? image_fullpath
+      return self.image_filename
+    else
+      return nil
+    end
+  end
+
+  def image_filename
+    "#{self.id}.jpg"
+  end
+  
   def traeme_una_puntita
     max = 10 # cantidad de palabras
     palabras = self.text.split(" ")

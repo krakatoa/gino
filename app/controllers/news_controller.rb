@@ -1,6 +1,6 @@
 class NewsController < ApplicationController
   def index
-    @news = News.in_language(I18n.locale)
+    @news = News.in_language(I18n.locale).all(:limit => 3, :order => "created_at desc")
   end
 
   def show
@@ -19,6 +19,9 @@ class NewsController < ApplicationController
     @news.language ||= I18n.locale.to_s
 
     if @news.save
+      begin
+        FileUtils.mv params[:news][:image].path, @news.image_fullpath
+      end
       redirect_to news_path(:id => @news.cross_language_id)
     else
       render :action => "new"

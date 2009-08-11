@@ -1,9 +1,10 @@
 <%- if @news.size > 0 %>
   <%- @news.each do |news| %>
-    <%= news.title %>
+    <%= link_to news.title, news_path(:id => news.cross_language_id) %>
     <p>
       <%- if logged_in? %>
-        <%= news.text %>
+        <%= link_to(image_tag(news.image_path, :width => "100"), news_path(:id => news.cross_language_id)) if news.image_path %>
+        <%= news.traeme_una_puntita %>
       <%- else %>
         <%= news.traeme_una_puntita %>
         <%= link_to t(:read), news_path(:id => news.cross_language_id) %>
@@ -12,4 +13,6 @@
     <br />
   <%- end %>
 <%- end %>
-<%= link_to "Nueva notice!", new_news_path %>
+<% if logged_in? and current_user.is_a? AdminUser %>
+  <%= link_to "Nueva notice!", new_news_path %>
+<% end %>

@@ -15,8 +15,8 @@ ActionController::Routing::Routes.draw do |map|
 
   map.my_account '/my_account', :controller => 'users', :action => 'edit'
 
-  map.root :controller => "home", :path_prefix => "/:locale"
-  map.root :controller => "home"
+  map.root :controller => "news", :path_prefix => "/:locale"
+  map.root :controller => "news"
 
   map.resource :user_session, :path_prefix => "/:locale"
   map.resource :user_session
