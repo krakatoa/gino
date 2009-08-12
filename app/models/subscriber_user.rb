@@ -1,5 +1,6 @@
 class SubscriberUser < User
   #Nota: Cuando uno finaliza la suscripcion tambien pierde el acceso a ver las noticias completas.
+  has_many :recommendations
 
   acts_as_authentic do |c|
     c.merge_validates_length_of_login_field_options(:allow_blank => true)

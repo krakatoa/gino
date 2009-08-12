@@ -37,6 +37,12 @@ class UsersController < ApplicationController
 
   def update
     @user = @current_user
+    begin
+      params[:recommendations].each_pair do |key, value|
+        Recommendation.create(:subscriber_user => @user, :email => value[:email])
+      end
+    rescue
+    end
     if @user.update_attributes(params[:user])
       #flash[:notice] = "Account updated!"
       redirect_to root_url

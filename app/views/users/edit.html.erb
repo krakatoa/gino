@@ -11,6 +11,8 @@
     <p><label>Pais</label> <%= f.select :country, country_names_collection %></p>
     <p><label>Idioma</label> <%= f.select :language, languages_collection %></p>
     <%#= f.select :country, country_names_collection, :selected => current_country_code %>
+    <p><label>Recomendar a un amigo</label></p>
+    <%= render :partial => "recommendations", :locals => {:user => @user} %>
     <%= f.submit "Guardar" %>
   <%- end %>
 </fieldset>

@@ -1,0 +1,14 @@
+<% fields_for :recommendations do |recommendations| %>
+  <% recommendations.fields_for "1" do |r| %>
+    <p><label>Email:</label><%= r.text_field :email %></p>
+  <% end %>
+  <% recommendations.fields_for "2" do |r| %>
+    <p><label>Email:</label><%= r.text_field :email %></p>
+  <% end %>
+  <% recommendations.fields_for "3" do |r| %>
+    <p><label>Email:</label><%= r.text_field :email %></p>
+  <% end %>
+  <% recommendations.fields_for "4" do |r| %>
+    <p><label>Email:</label><%= r.text_field :email %></p>
+  <% end %>
+<% end %>
