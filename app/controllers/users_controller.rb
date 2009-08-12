@@ -21,7 +21,7 @@ class UsersController < ApplicationController
   end
 
   def new
-    @subscriber_user = User.new
+    @subscriber_user = SubscriberUser.new
   end
 
   def show
