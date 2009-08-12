@@ -1,10 +1,18 @@
-<%= javascript_include_tag "jquery.min" %>
-<%= stylesheet_link_tag "altidus" %>
+<?xml version='1.0' encoding='utf-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<head>
+  <meta content='text/html;charset=UTF-8' http-equiv='content-type' />
+  <title><%= yield :page_title %></title>
+  <%= stylesheet_link_tag "altidus" %>
+  <%= javascript_include_tag "jquery.min" %>
+</head>
 <%- load_last_news %>
-<div id="wrapper">
-  <div id="header"><%= render :partial => "layouts/header" %></div>
-  <div id="content">
-    <div id="left-side"><%= render :partial => "layouts/left_side" %></div>
-    <%= content_tag(:div, yield, {:id => "main", :class => yield(:main_class)}) %>
+<body>
+  <div id="wrapper">
+    <div id="header"><%= render :partial => "layouts/header" %></div>
+    <div id="content">
+      <div id="left-side"><%= render :partial => "layouts/left_side" %></div>
+      <%= content_tag(:div, yield, {:id => "main", :class => yield(:main_class)}) %>
+    </div>
   </div>
-</div>
+</body>

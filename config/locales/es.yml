@@ -9,6 +9,7 @@ es:
   spanish: espanol
   read_last_news: lee las ultimas noticias
   register: Registrate
+  my_account: Mi Cuenta
   username: Usuario
   password: Clave
   conditions: Condiciones de uso

@@ -18,11 +18,25 @@ module ApplicationHelper
     CountryName.all(:order => "#{lang} asc").collect{|c| [c.send(lang), c.code]}
   end
 
+  def languages_collection()
+    Language.all.collect{|l| [nombre_idioma(l.code), l.code]}
+  end
+
   def load_last_news
     @last_news = News.in_language(I18n.locale).all(:order => "created_at desc", :limit => 5)
   end
 
   def main
     content_tag(:div, yield, {:id => "main"})
+  end
+
+  def html_title(title="")
+    html_title = "Altidus"
+    if not title.blank?
+      html_title << " - #{title}"
+    end
+    content_for :page_title do
+      html_title
+    end
   end
 end

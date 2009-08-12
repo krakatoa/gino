@@ -1,12 +1,13 @@
+<%- html_title "News" %>
 <%- form_for @news, :url => news_index_path, :html => { :multipart => true } do |f| %>
   <%- if f.error_messages.size > 0 %>
     <div class="error"><%= f.error_messages %></div>
   <%- end %>
   <!--<textarea cols="40" id="article_body" name="article[body]" rows="20" style="width: 580px; padding: 5px"></textarea>-->
-  <%= f.text_field :title %><br />
-  <%= f.text_field :bajada %>
+  <label>Titulo</label> <%= f.text_field :title %><br />
+  <label>Bajada</label> <%= f.text_field :bajada %><br />
+  <label>Foto</label><%= f.file_field :image %>
   <%= f.text_area :text %>
-  <%= f.file_field :image %>
   <link href="stylesheets/textile-editor.css" media="screen" rel="Stylesheet" type="text/css" />
   <%= javascript_include_tag "jquery.TextileEditor" %>
   <script type="text/javascript">
