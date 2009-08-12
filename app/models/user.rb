@@ -1,7 +1,4 @@
 class User < ActiveRecord::Base
-  #belongs_to :country
-  #belongs_to :language
-
   self.inheritance_column = "user_kind"
   validates_presence_of :user_kind
 

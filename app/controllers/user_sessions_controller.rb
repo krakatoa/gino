@@ -7,8 +7,17 @@ class UserSessionsController < ApplicationController
   end
 
   def create
-		@user_session = UserSession.new(params[:user_session])
-		if @user_session.valid? and @user_session.save
+    if params[:user_session][:username] =~ /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i
+      begin
+        user = SubscriberUser.find_by_email(params[:user_session][:username])
+        @user_session = UserSession.create(user)
+      rescue
+      end
+    end
+    if not @user_session
+      @user_session = UserSession.new(params[:user_session])
+    end
+		if user || (@user_session.valid? and @user_session.save)
       redirect_back_or_default news_index_url
 		else
       flash[:notice] = @user_session.errors.on("base") if @user_session.errors.on("base")
