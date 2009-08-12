@@ -19,6 +19,9 @@ a {
 a:hover {
   text-decoration: underline;
 }
+fieldset {
+  border: transparent;
+}
 
 #header {
   background: left url(../images/header_back.png) repeat-x;
@@ -154,6 +157,35 @@ a:hover {
 #main.about {
   font-size: 14px;
   font-style: italic;
+}
+
+#main.register legend {
+  visibility: hidden;
+}
+
+#main.register input {
+  position: absolute;
+  font-size: 10px;
+  border: transparent;
+  height: 10px;
+  width: 220px;
+}
+
+#main.register #subscriber_user_email {
+  left: 535px;
+  top: 431px;
+}
+
+#main.register #subscriber_user_email_confirmation {
+  left: 535px;
+  top: 452px;
+}
+
+#main.register #subscriber_user_submit {
+  height: 20px;
+  width: 70px;
+  left: 535px;
+  top: 473px;
 }
 
 .news .image img {

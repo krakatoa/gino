@@ -6,6 +6,7 @@ class CreateCountryNames < ActiveRecord::Migration
       t.string :en, :null => false
     end
     add_index :country_names, [:code]
+    Feeder.feed_country_names
   end
 
   def self.down

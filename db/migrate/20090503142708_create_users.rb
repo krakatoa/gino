@@ -10,8 +10,8 @@ class CreateUsers < ActiveRecord::Migration
       t.string :name, :default => nil
       t.string :last_name, :default => nil
       t.integer :birth_year, :default => nil
-      t.integer :language_id, :null => false
-      t.string :country
+      t.string :language, :default => nil
+      t.string :country, :default => nil
 
       t.boolean :active, :default => false, :null => false
 

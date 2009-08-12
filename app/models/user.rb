@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
-  belongs_to :language
+  #belongs_to :country
+  #belongs_to :language
 
   self.inheritance_column = "user_kind"
   validates_presence_of :user_kind
@@ -8,7 +9,6 @@ class User < ActiveRecord::Base
 
   def initialize(attributes = nil)
     super
-    self.language ||= Language.first
   end
 
   #def deliver_password_reset_instructions!

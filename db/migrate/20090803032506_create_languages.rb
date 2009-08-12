@@ -3,6 +3,7 @@ class CreateLanguages < ActiveRecord::Migration
     create_table :languages do |t|
       t.string :code, :null => false
     end
+    add_index :languages, [:code]
     Language.create!(:code => "es")
     Language.create!(:code => "en")
   end

@@ -10,6 +10,8 @@ class UsersController < ApplicationController
 
   def create
     @subscriber_user = SubscriberUser.new(params[:subscriber_user]) # We use GUI only for creation of Customers
+    @subscriber_user.country ||= current_country_code
+    @subscriber_user.language = I18n.locale.to_s
 
     if @subscriber_user.save_without_session_maintenance
       @subscriber_user.deliver_activation_instructions!
