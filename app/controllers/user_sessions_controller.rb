@@ -18,7 +18,7 @@ class UserSessionsController < ApplicationController
       @user_session = UserSession.new(params[:user_session])
     end
 		if user || (@user_session.valid? and @user_session.save)
-      redirect_back_or_default news_index_url
+      redirect_back_or_default news_index_url(:locale => user.language)
 		else
       flash[:notice] = @user_session.errors.on("base") if @user_session.errors.on("base")
       redirect_back_or_default root_url
