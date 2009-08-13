@@ -44,17 +44,26 @@ class News < ActiveRecord::Base
     return puntita
   end
 
+  def other_available_languages
+    Language.available_languages.select{|l| l != Language.find_by_code(self.language).code}
+  end
+
   def other_languages
     # TODO se podra hacer con menos queries ?
 
-    other_available_languages = Language.available_languages.select{|l| l != Language.find_by_code(self.language).code}
-    news_localizations = NewsLocalizations.find(self.cross_language_id)
-
     other_languages = []
-    other_available_languages.each do |language|
-      other_languages << language unless news_localizations.read_attribute("#{language}_id").blank?
+    self.other_available_languages.each do |language|
+      other_languages << language unless self.news_localizations.read_attribute("#{language}_id").blank?
     end
     other_languages
+  end
+
+  def missing_languages
+    missing_languages = []
+    self.other_available_languages.each do |language|
+      missing_languages << language if self.news_localizations.read_attribute("#{language}_id").blank?
+    end
+    missing_languages
   end
 
   private

@@ -1,5 +1,11 @@
 <%- html_title "News" %>
 <%- form_for @news, :url => news_index_path, :html => { :multipart => true } do |f| %>
+  <%= f.hidden_field :cross_language_id %>
+  <%- unless @news.language.blank? %>
+    <%= f.hidden_field :language %>
+  <%- else %>
+    <p><label>Idioma</label> <%= f.select :language, languages_collection %></p>
+  <%- end %>
   <%= render :partial => "form", :locals => {:f => f} %>
   <%= render :partial => "tags" %>
   <p><%= f.submit "Submit" %></p>

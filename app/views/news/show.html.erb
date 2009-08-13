@@ -1,5 +1,11 @@
 <h1><%= @news.title %></h1>
 <%= link_to "edit", edit_news_path(:id => @news.id) if logged_in? and current_user.is_a? AdminUser %>
+<%- if logged_in? and current_user.is_a? AdminUser and @news.missing_languages.size > 0 %>
+  <%- @news.missing_languages.each do |l| %>
+    <%= link_to "#{t(:translate_into)} #{nombre_idioma(l)}", new_news_path(:localization => @news.cross_language_id, :language => l) %>
+  <%- end %>
+<%- end %>
+<%#= link_to "translate!", new_news_path(:id => @news.cross_language_id) if logged_in? and current_user.is_a? AdminUser %>
 <br />
 <%= image_tag(@news.image_path, :width => "300") if @news.image_path %>
 <%- if logged_in? %>
