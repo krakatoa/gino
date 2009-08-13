@@ -1,5 +1,5 @@
 <%- html_title "News" %>
-<%- form_for @news, :url => news_index_path, :html => { :multipart => true } do |f| %>
+<%- form_for @news, :url => news_path(:id => @news.id), :html => { :multipart => true, :method => :put } do |f| %>
   <%= render :partial => "form", :locals => {:f => f} %>
   <%= render :partial => "tags" %>
   <p><%= f.submit "Submit" %></p>

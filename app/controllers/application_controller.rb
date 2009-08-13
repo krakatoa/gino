@@ -19,6 +19,7 @@ class ApplicationController < ActionController::Base
       params[:locale] = nil
     end
     I18n.locale = params[:locale]
+    
     # if params[:locale] is nil then I18n.default_locale will be used (en locale=)
     I18n.locale = I18n.locale.to_s
     I18n.locale ||= :es
@@ -45,6 +46,14 @@ class ApplicationController < ActionController::Base
 
     def require_user
       unless current_user
+        store_location
+        redirect_to login_url
+        return false
+      end
+    end
+
+    def require_admin
+      if not current_user or not current_user.is_a? AdminUser
         store_location
         redirect_to login_url
         return false

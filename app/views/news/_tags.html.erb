@@ -1,0 +1,8 @@
+<% fields_for :tags do |tags| %>
+  <% tags.fields_for "1" do |r| %>
+    <p><label>New tag:</label><%= r.text_field :label %></p>
+  <% end %>
+  <% tags.fields_for "new_tag" do |r| %>
+    <p><label>Tag:</label><%= r.select :label, tags_collection %></p>
+  <% end %>
+<% end %>

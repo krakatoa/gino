@@ -1,0 +1,14 @@
+<%- if f.error_messages.size > 0 %>
+  <div class="error"><%= f.error_messages %></div>
+<%- end %>
+<label>Titulo</label> <%= f.text_field :title %><br />
+<label>Bajada</label> <%= f.text_field :bajada %><br />
+<label>Foto</label><%= f.file_field :image %>
+<%= f.text_area :text %>
+<link href="stylesheets/textile-editor.css" media="screen" rel="Stylesheet" type="text/css" />
+<%= javascript_include_tag "jquery.TextileEditor" %>
+<script type="text/javascript">
+$(function(){
+  $('#news_text').TextileEditor('extended');
+});
+</script>

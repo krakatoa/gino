@@ -22,6 +22,10 @@ module ApplicationHelper
     Language.all.collect{|l| [nombre_idioma(l.code), l.code]}
   end
 
+  def tags_collection()
+    Tag.all.collect{|t| [t.label, t.id]}
+  end
+
   def load_last_news
     @last_news = News.in_language(I18n.locale).all(:order => "created_at desc", :limit => 5)
   end

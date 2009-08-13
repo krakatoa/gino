@@ -1,6 +1,8 @@
 <h1><%= @news.title %></h1>
+<%= link_to "edit", edit_news_path(:id => @news.id) if logged_in? and current_user.is_a? AdminUser %>
+<br />
+<%= image_tag(@news.image_path, :width => "300") if @news.image_path %>
 <%- if logged_in? %>
-  <%= image_tag(@news.image_path, :width => "300") if @news.image_path %>
   <%= @news.text %>
 <%- else %>
   <%= @news.traeme_una_puntita %>
@@ -8,3 +10,14 @@
 <%- @news.other_languages.each do |language| %>
   <%= link_to "#{t(:read_it_in)} #{nombre_idioma(language)}", news_path(:locale => language, :id => @news.cross_language_id) %>
 <%- end %>
+<div class="tags">
+  <% if @news.tags.size > 0 %>
+    <ul>
+      <% @news.tags.each do |tag| %>
+        <li>
+          <%= tag.label %>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
+</div>
