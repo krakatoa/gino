@@ -1,6 +1,6 @@
 *.log
-public/images/en/altidus.png
-public/images/es/altidus.png
+public/images/en/
+public/images/es/
 config/database.yml
 config/mail.yml
 lib/tasks/start.rake
