@@ -1,7 +1,7 @@
 class CreateRecommendations < ActiveRecord::Migration
   def self.up
     create_table :recommendations do |t|
-      t.integer :subscriber_user_id, :null => false
+      t.integer :user_id, :null => false
       t.string :email, :null => false
       t.boolean :sent, :default => false
     end

@@ -39,7 +39,7 @@ class UsersController < ApplicationController
     @user = @current_user
     begin
       params[:recommendations].each_pair do |key, value|
-        Recommendation.create(:subscriber_user => @user, :email => value[:email])
+        Recommendation.create(:user => @user, :email => value[:email])
       end
     rescue
     end
