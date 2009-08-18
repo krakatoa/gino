@@ -6,7 +6,7 @@ class News < ActiveRecord::Base
   belongs_to :news_localizations, :foreign_key => "cross_language_id"
   has_one :es, :through => :news_localizations
   has_one :en, :through => :news_localizations
-  has_and_belongs_to_many :tags
+  has_and_belongs_to_many :tags, :uniq => true
 
   validates_presence_of :title, :text, :language
 

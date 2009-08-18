@@ -63,6 +63,20 @@ class NewsController < ApplicationController
         end
       rescue
       end
+      params[:tags].each_pair do |key, tag_params|
+        label = tag_params[:label]
+        tag = nil
+        begin
+          tag ||= Tag.find_by_label(label)
+        rescue
+        end
+        begin
+          tag ||= Tag.find_by_id(label)
+        rescue
+        end
+        tag ||= Tag.create(:label => label) if not tag and not label.blank?
+        @news.tags << tag if tag
+      end
       redirect_to news_path(:id => @news.cross_language_id)
     else
       render :action => "edit"
