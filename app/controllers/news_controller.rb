@@ -1,5 +1,6 @@
 class NewsController < ApplicationController
-  before_filter :require_admin, :except => [:index, :show]
+  before_filter :require_news_writer, :except => [:index, :show]
+  before_filter :require_user, :only => [:show]
 
   def index
      @news = News.in_language(I18n.locale).all(:limit => 3, :order => "created_at desc")

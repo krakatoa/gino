@@ -3,7 +3,8 @@
 
 class ApplicationController < ActionController::Base
   helper :all # include all helpers, all the time
-  helper_method :current_user_session, :current_user, :logged_in?, :current_country_code, :current_country_name
+  helper_method :current_user_session, :current_user, :current_country_code, :current_country_name
+  helper_method :logged_in?, :is_news_writer?, :is_admin?
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
 
   # Scrub sensitive parameters from your log
@@ -47,7 +48,15 @@ class ApplicationController < ActionController::Base
     def require_user
       unless current_user
         store_location
-        redirect_to login_url
+        redirect_to signup_url
+        return false
+      end
+    end
+
+    def require_news_writer
+      if not current_user or not current_user.is_a? NewsWriterUser
+        store_location
+        redirect_to root_url
         return false
       end
     end
@@ -55,7 +64,7 @@ class ApplicationController < ActionController::Base
     def require_admin
       if not current_user or not current_user.is_a? AdminUser
         store_location
-        redirect_to login_url
+        redirect_to root_url
         return false
       end
     end
@@ -100,8 +109,16 @@ class ApplicationController < ActionController::Base
       end
     end
 
+    def is_news_writer?
+      current_user.is_a? NewsWriterUser
+    end
+
+    def is_admin?
+      current_user.is_a? AdminUser
+    end
+
     def current_country_code
-      if ENV['RAILS_ENV'].eql?('production')
+      if USE_GEOIP
         GEOIP.country(request.remote_ip)[3].downcase
       else
         "ar"

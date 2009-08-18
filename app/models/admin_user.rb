@@ -1,5 +1,3 @@
-class AdminUser < User
-  acts_as_authentic
-
+class AdminUser < NewsWriterUser
   private
 end

@@ -11,7 +11,7 @@
   </div>
 <%- end %>
 <div class="bottom">
-  <% if logged_in? and current_user.is_a? AdminUser %>
+  <% if logged_in? and is_news_writer? %>
     <%= link_to "Nueva notice!", new_news_path %>
   <% end %>
 </div>

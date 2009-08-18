@@ -29,3 +29,6 @@ config.action_view.cache_template_loading            = true
 
 DATA_DIR = File.join(RAILS_ROOT,'data')
 IMAGES_PATH = "#{RAILS_ROOT}/public/images/"
+
+USE_GEOIP = true
+HOSTNAME = ""
