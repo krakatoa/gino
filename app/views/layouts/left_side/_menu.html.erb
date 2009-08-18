@@ -2,7 +2,7 @@
 <ul>
   <%- if @last_news and @last_news.size > 0 %>
     <%- @last_news.each do |news| %>
-      <li><%= link_to_unless_current news.title, news_path(:id => news.cross_language_id) %></li>
+      <li><%= link_to_news(news) %></li>
     <%- end %>
   <%- end %>
 </ul>
