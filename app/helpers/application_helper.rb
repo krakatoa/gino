@@ -22,8 +22,12 @@ module ApplicationHelper
     Language.all.collect{|l| [nombre_idioma(l.code), l.code]}
   end
 
-  def tags_collection()
+  def tags_collection
     Tag.all.collect{|t| [t.label, t.id]}
+  end
+
+  def year_of_birth_collection
+    ((Time.now.year - 99)..Time.now.year).to_a.reverse
   end
 
   def load_last_news

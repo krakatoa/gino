@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  has_many :recommendations
+
   self.inheritance_column = "user_kind"
   validates_presence_of :user_kind
 
@@ -12,9 +14,4 @@ class User < ActiveRecord::Base
   #  reset_persistence_token!
   #  Notifier.deliver_password_reset_instructions(self)
   #end
-
-  protected
-    def is_admin?
-      self.is_a? AdminUser
-    end
 end

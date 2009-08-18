@@ -7,10 +7,9 @@
     <p><label>E-Mail</label> <%= f.text_field :email %></p>
     <p><label>Nombre</label> <%= f.text_field :name %></p>
     <p><label>Apellido</label> <%= f.text_field :last_name %></p>
-    <p><label>Ano de nacimiento</label> <%= f.text_field :birth_year %></p>
+    <p><label>Ano de nacimiento</label> <%= f.select :birth_year, year_of_birth_collection, :prompt => "-- Select --" %></p>
     <p><label>Pais</label> <%= f.select :country, country_names_collection %></p>
     <p><label>Idioma</label> <%= f.select :language, languages_collection %></p>
-    <%#= f.select :country, country_names_collection, :selected => current_country_code %>
     <p><label>Recomendar a un amigo</label></p>
     <%= render :partial => "recommendations", :locals => {:user => @user} %>
     <%= f.submit "Guardar" %>
