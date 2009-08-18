@@ -1,5 +1,5 @@
 class Notifier < ActionMailer::Base
-  default_url_options[:host] = "localhost"
+  default_url_options[:host] = HOSTNAME
 
   def activation_instructions(user)
     subject       "Activation Instructions"

@@ -19,7 +19,10 @@ class UserSessionsController < ApplicationController
     end
 		if user || (@user_session.valid? and @user_session.save)
       language = user.language if user
-      language ||= User.find_by_username(@user_session.username).language if @user_session.username
+      begin
+        language ||= User.find_by_username(@user_session.username).language if @user_session.username
+      rescue
+      end
       language ||= I18n.locale
       redirect_back_or_default news_index_url(:locale => language)
 		else
