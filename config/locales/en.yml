@@ -18,3 +18,5 @@ en:
   search: Search
   register: Register
   about_us: About us
+  registration_thanks: "Thank you for creating an account! Click the url below to activate your subscription!"
+  registration_troubleshooting: "If the above URL does not work try copying and pasting it into your browser. If you continue to have problem, please feel free to contact us."

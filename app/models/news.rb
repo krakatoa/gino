@@ -34,10 +34,14 @@ class News < ActiveRecord::Base
   def image_filename
     "#{self.id}.jpg"
   end
+
+  def image_public_path
+    PUBLIC_IMAGES_URI.merge(image_filename).to_s
+  end
   
   def traeme_una_puntita
     max = 10 # cantidad de palabras
-    palabras = self.text.split(" ")
+    palabras = self.text(:plain).split(" ")
     cant_palabras = palabras.size
     puntita = palabras[0..max - 1].join(" ")
     puntita.concat("...") if cant_palabras > max

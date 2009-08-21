@@ -1,0 +1,4 @@
+<h1><%= @news.title %></h1>
+<br />
+<%= image_tag(@news.image_public_path, :width => "300") if @news.image_path %>
+<%= @news.text %>

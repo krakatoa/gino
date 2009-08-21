@@ -18,6 +18,6 @@ config.action_mailer.raise_delivery_errors = false
 
 DATA_DIR = File.join(RAILS_ROOT,'data')
 IMAGES_PATH = "#{RAILS_ROOT}/public/images/"
+HOSTNAME = "http://localhost:3000"
 
 USE_GEOIP = false
-HOSTNAME = "localhost:3000"

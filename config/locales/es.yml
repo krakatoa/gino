@@ -18,3 +18,5 @@ es:
   search: Buscar
   register: Registro
   about_us: Quienes somos
+  registration_thanks: "Gracias por registrarse! Haga clic en el link de abajo para activar su suscripcion!"
+  registration_troubleshooting: "Si la url no funciona, pruebe copiando y pegandola en su navegador. Si continua el problema, sientase libre de contactarnos."
