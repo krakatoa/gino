@@ -1,5 +1,5 @@
 class Notifier < ActionMailer::Base
-  default_url_options[:host] = HOSTNAME
+  default_url_options[:host] = "#{HOSTNAME_URI.host}:#{HOSTNAME_URI.port}"
 
   def activation_instructions(user)
     subject       "Activation Instructions"
@@ -22,7 +22,12 @@ class Notifier < ActionMailer::Base
     from          "fedario@gmail.com"
     recipients    user.email
     sent_on       Time.now
-    body          :news => news
-    content_type  "text/html"
+    if user.plain_format?
+      content_type  "text/plain"
+      body          render_message("plain_newsletter", :news => news)
+    else
+      content_type  "text/html"
+      body          render_message("newsletter", :news => news)
+    end
   end
 end

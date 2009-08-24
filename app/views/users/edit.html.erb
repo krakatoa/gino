@@ -10,6 +10,7 @@
     <p><label>Ano de nacimiento</label> <%= f.select :birth_year, year_of_birth_collection, :prompt => "-- Select --" %></p>
     <p><label>Pais</label> <%= f.select :country, country_names_collection %></p>
     <p><label>Idioma</label> <%= f.select :language, languages_collection %></p>
+    <p><label>Recibir noticias en formato plano</label> <%= f.check_box :plain_format %></p>
     <p><label>Recomendar a un amigo</label></p>
     <%= render :partial => "recommendations", :locals => {:user => @user} %>
     <%= f.submit "Guardar" %>

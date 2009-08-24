@@ -14,6 +14,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string :country, :default => nil
 
       t.boolean :active, :default => false, :null => false
+      t.boolean :plain_format, :default => false, :null => false
 
       t.string :persistence_token
       t.string :last_login_ip
